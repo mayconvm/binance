@@ -1,0 +1,13 @@
+{
+    "name": "maycon/binance",
+    "authors": [
+        {
+            "name": "MayconVM",
+            "email": "mayconvm@gmail.com"
+        }
+    ],
+    "require": {},
+    "script": {
+    	"start": "php artisan octane:start --server=swoole --host=0.0.0.0 --port=80 --watch"
+    }
+}
