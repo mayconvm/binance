@@ -18,16 +18,22 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /app
 
-# CMD ["php", "artisan", "serve"]
+# Parallel install
+#RUN composer global require hirak/prestissimo
 
+RUN composer create-project laravel/laravel apis --prefer-dist
+
+WORKDIR /app/api
+
+CMD ["sleep", "1000"]
 
 # RUN cd api && \
 # 	composer require laravel/octane && \
 # 	chmod +x artisan && \
 # 	php artisan octane:install
-#
+# 
 # RUN composer require spiral/roadrunner && \
 # 	./vendor/bin/rr get-binary && \
 # 	chmod u+x rr
-#
+# 
 # CMD ["php", "artisan", "octane:start"]
