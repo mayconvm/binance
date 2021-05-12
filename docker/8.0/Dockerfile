@@ -54,6 +54,9 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /etc/php/8.0/cli/conf.d/99-sail.ini
 RUN chmod +x /usr/local/bin/start-container
 
+RUN composer install
+RUN npm install --save-dev chokidar
+
 EXPOSE 8000
 
 ENTRYPOINT ["start-container"]
