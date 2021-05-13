@@ -2,14 +2,16 @@
 
 namespace App\Service\Bot;
 
+use App\Service\Strategy\StrategyAbstractInterface;
+
 abstract class BotAbstractInterface
 {
-    private StrategyAbstractInteface $strategy;
+    private StrategyAbstractInterface $strategy;
 
     protected BotSettings $botSettings;
 
     public function __construct(
-        StrategyAbstractInteface $strategy,
+        StrategyAbstractInterface $strategy,
         BotSettings $botSettings
     ) {
         $this->strategy = $strategy;

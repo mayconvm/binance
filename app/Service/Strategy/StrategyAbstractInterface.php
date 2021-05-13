@@ -2,7 +2,7 @@
 
 namespace App\Service\Strategy;
 
-abstract class StrategyAbstractInteface
+abstract class StrategyAbstractInterface
 {
     protected StrategySettings $settings;
 

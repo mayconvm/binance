@@ -10,9 +10,12 @@ class BinanceService
 
     public function getSecurityData()
     {
+        // get database
+        // apply criptografy
     }
 
     public function getStrategy()
     {
+
     }
 }
