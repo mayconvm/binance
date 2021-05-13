@@ -16,6 +16,8 @@ abstract class BotAbstractInterface
     ) {
         $this->strategy = $strategy;
         $this->botSettings = $botSettings;
+
+        $this->boot();
     }
 
     abstract public function start() : void;
@@ -23,4 +25,8 @@ abstract class BotAbstractInterface
     abstract public function buy() : bool;
 
     abstract public function sell() : bool;
+
+    protected function boot() : void
+    {
+    }
 }
