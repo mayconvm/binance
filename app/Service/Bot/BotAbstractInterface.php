@@ -6,9 +6,11 @@ use App\Service\Strategy\StrategyAbstractInterface;
 
 abstract class BotAbstractInterface
 {
-    private StrategyAbstractInterface $strategy;
+    protected StrategyAbstractInterface $strategy;
 
     protected BotSettings $botSettings;
+
+    protected $api;
 
     public function __construct(
         StrategyAbstractInterface $strategy,
@@ -18,15 +20,28 @@ abstract class BotAbstractInterface
         $this->botSettings = $botSettings;
 
         $this->boot();
+
+        // instance api to get history data about strategy
+        $this->strategy->setInstanceApiToGetData($this->getInstanceApi());
     }
 
-    abstract public function start() : void;
+    abstract protected function boot() : void;
+
+    abstract public function exec() : bool;
+
+    abstract public function analysis() : void;
 
     abstract public function buy() : bool;
 
     abstract public function sell() : bool;
 
-    protected function boot() : void
+    protected function setInstanceApi($api)
     {
+        $this->api = $api;
+    }
+
+    public function getInstanceApi()
+    {
+        return $this->api;
     }
 }

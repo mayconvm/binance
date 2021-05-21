@@ -51,7 +51,11 @@ class BinanceService
             $settingsBot
         );
 
-        while ($bot->start()) {
+        while ($bot->exec()) {
+            $bot->analysis();
+            $bot->buy();
+            $bot->sell();
+            dd("oi");
         }
     }
 }

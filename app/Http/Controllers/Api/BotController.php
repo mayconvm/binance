@@ -6,24 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
-use App\Service\Bot\Binance;
-use App\Service\Strategy\Simple;
-use App\Service\Bot\BotSettings;
-use App\Service\Strategy\StrategySettings;
+use App\Service\BinanceService;
 
 class BotController extends Controller
 {
+    public function __construct(BinanceService $binanceService)
+    {
+        $this->binanceService = $binanceService;
+    }
+
     public function index()
     {
-        $bot = new Binance(
-            new Simple(
-                new StrategySettings
-            ),
-            new BotSettings
-        );
+        $bot = 'Binance';
+        $strategy = 'Simple';
 
-        $bot->start();
+        $this->binanceService->executeBot();
 
         return ['ok' => true];
     }
