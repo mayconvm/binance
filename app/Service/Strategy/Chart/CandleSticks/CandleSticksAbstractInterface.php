@@ -2,6 +2,8 @@
 
 namespace App\Service\Strategy\Chart\CandleSticks;
 
+use App\Service\Strategy\Chart\CandleSticks\Adapter\CandleSticksAdapterAbstractInterface;
+
 abstract class CandleSticksAbstractInterface
 {
     protected CandleSticksAdapterAbstractInterface $adapter;
@@ -22,6 +24,19 @@ abstract class CandleSticksAbstractInterface
      */
     public function ma(int $quantity) : float
     {
+        $data = $this->adapter->getData();
+        $total = count($data);
+
+        if (!$total) {
+            return 0;
+        }
+
+        $maa = 0;
+        foreach ($data as $key => $item) {
+            $maa += $item['close'];
+        }
+
+        return $maa/$total;
     }
 
     /**
@@ -31,6 +46,8 @@ abstract class CandleSticksAbstractInterface
      */
     public function ema(int $quantity) : float
     {
+
+        return 0;
     }
 
     /**
@@ -40,6 +57,8 @@ abstract class CandleSticksAbstractInterface
      */
     public function wma(int $quantity) : float
     {
+
+        return 0;
     }
 
     /**
@@ -49,5 +68,7 @@ abstract class CandleSticksAbstractInterface
      */
     public function avl(int $quantity) : float
     {
+
+        return 0;
     }
 }

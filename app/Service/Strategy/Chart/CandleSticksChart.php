@@ -11,5 +11,7 @@ class CandleSticksChart extends ChartAbstractInterface
         $instance = new Bear180(
             $this->getAdapter()
         );
+
+        return $instance;
     }
 }
