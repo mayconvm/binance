@@ -7473,7 +7473,7 @@
         "open": 0.009409,
         "high": 0.009426,
         "low": 0.009312,
-        "close": 0.00936,
+        "close": 0.009909,
         "volume": 31.6601857,
         "openTime": 1621592700000,
         "closeTime": 1621592999999,
@@ -7497,6 +7497,21 @@
         "trades": 847,
         "assetBuyVolume": 1564.83,
         "takerBuyVolume": 14.65035429,
+        "ignored": 0
+    },
+    "1621593300000": {
+        "open": 0.008562,
+        "high": 0.008564,
+        "low": 0.008167,
+        "close": 0.008197,
+        "volume": 150.12441326,
+        "openTime": 1621593300000,
+        "closeTime": 1621593499999,
+        "assetVolume": 18017.81,
+        "baseVolume": 150.12441326,
+        "trades": 7081,
+        "assetBuyVolume": 9336.0,
+        "takerBuyVolume": 77.71677545,
         "ignored": 0
     }
 }
