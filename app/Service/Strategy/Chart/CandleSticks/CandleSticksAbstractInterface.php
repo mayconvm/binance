@@ -13,7 +13,7 @@ abstract class CandleSticksAbstractInterface
         $this->adapter = $adapter;
     }
 
-    abstract public function watch() : bool;
+    abstract public function watch();
 
     abstract public function exist() : bool;
 
@@ -24,15 +24,15 @@ abstract class CandleSticksAbstractInterface
      */
     public function ma(int $quantity) : float
     {
-        $data = $this->adapter->getData();
-        $total = count($data);
+        $content = $this->adapter->getData($quantity);
+        $total = count($content);
 
         if (!$total) {
             return 0;
         }
 
         $maa = 0;
-        foreach ($data as $key => $item) {
+        foreach ($content as $key => $item) {
             $maa += $item['close'];
         }
 
@@ -63,12 +63,15 @@ abstract class CandleSticksAbstractInterface
 
     /**
      * Average simple
-     * @param  int    $quantity [description]
-     * @return [type]           [description]
+     * @return float
      */
-    public function avl(int $quantity) : float
+    public function avl() : float
     {
+        return $this->ma(1000000);
+    }
 
-        return 0;
+    protected function getData(int $quantity = 10000)
+    {
+        return $this->adapter->getData($quantity);
     }
 }

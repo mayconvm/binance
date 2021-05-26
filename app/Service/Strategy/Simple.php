@@ -18,8 +18,10 @@ class Simple extends StrategyAbstractInterface
         );
 
         $bear180 = $chartSticks->getBear180();
+        $bull180 = $chartSticks->getBull180();
         dd(
-            $bear180->exist()
+            $bear180->exist(3, 1),
+            $bull180->exist(3, 2)
         );
     }
 
