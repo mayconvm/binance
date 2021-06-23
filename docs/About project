@@ -1,0 +1,50 @@
+Todo
+
+[x] Se conectar com a Binance
+[x] Implementar a identificação do Bull 180
+[x] Implementar a identificação do Bear 180
+[] Buscar as informações sobre os candlestick
+    [] Rotina com socket para baixar os últimos dados
+    [] Armazenar no mysql
+
+[] Realizar operação de COMPRA na Binance
+    [] Ouvir o socket para obter os últimos dados
+    [] Aplicar analise dos dados
+    [] Realizar Operação de COMPRA com STOP LOSS
+
+?[] Realizar Operação de SELL
+    [] Ouvir o socket para obter os últimos dados
+    [] Aplicar analise dos dados
+    [] Realizar Operação de SELL
+
+
+
+Backlog
+
+
+
+
+
+
+
+PESQUISA SOBRE GRAFICOS
+
+Como foi feito linhas de suporte e resistencia usando JS
+https://www.tradingview.com/script/8ULEL46w-Support-Ressistance-by-kaleboraciy/
+
+Exemplos usados para calcular linhas de suporte e resistencia
+https://www.tradingview.com/scripts/supportandresistance/
+
+Linhas de suporte na diagonal
+http://bl.ocks.org/andredumas/edf630690c10b89be390
+
+
+Calculo para médias e máximas
+https://www.nelogica.com.br/conhecimento/artigos/indicadores-estudo/calculando-niveis-pivot
+https://smarttbot.com/trader/pontodepivo-daytrade/
+
+Informações Sobre vários indicadores
+https://www.nelogica.com.br/conhecimento/artigos/indicadores-estudo
+
+Plataforma de bot
+https://smarttbot.com/
