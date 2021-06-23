@@ -4,12 +4,13 @@ namespace App\Service\Strategy\Chart\CandleSticks;
 
 class Bear180 extends CandleSticksAbstractInterface
 {
+    protected array $itemFound;
+
     public function watch(int $timeSecond = 1, int $quantatySticks = 3, float $percLengthDiff = 2)
     {
         while (true) {
-            yield $this->exist($quantatySticks, $percLengthDiff);
-
             sleep($timeSecond);
+            yield $this->exist($quantatySticks, $percLengthDiff);
         }
     }
 
@@ -38,10 +39,21 @@ class Bear180 extends CandleSticksAbstractInterface
                 //     (1 - ($data[$key - 1]['open'] / $data[$key - 1]['close'])) . ' - ' .
                 // "\n<br>";
 
+                $this->itemFound = $value;
                 return true;
             }
         }
 
         return false;
+    }
+
+    public function getLastValue() : float
+    {
+        return $this->itemFound['close'];
+    }
+
+    public function getOpenValue() : float
+    {
+        return $this->itemFound['open'];
     }
 }

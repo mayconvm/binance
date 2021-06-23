@@ -17,24 +17,28 @@ class Simple extends StrategyAbstractInterface
             $this->getInstanceApiToGetData()
         );
 
-        $bear180 = $chartSticks->getBear180();
+        // encontra bear180
         $bull180 = $chartSticks->getBull180();
-        dd(
-            $bear180->exist(3, 1),
-            $bull180->exist(3, 2)
-        );
-    }
+        if (!$bull180->exist(3, 2)) {
+            return;
+        }
 
-    public function buy() : bool
-    {
-    }
+        // TODO: verifica se a média ...
 
-    public function sell() : bool
-    {
-    }
+        // compra a valor de mercado
+        // stop no valor do 2/3 do último candle
+        // venda há 5%
 
-    public function getValue() : float
-    {
-    }
+        $this->typeOrder = self::TYPE_ORDER_LIMIT;
 
+        $valueMarket = $bull180->getLastValue();
+        $valueLastOpen = $bull180->getOpenValue();
+        $profit = $this->settings->getPercentProfit();
+
+        $sellAndProfit = $valueMarket + ($valueMarket * $profit);
+
+        $this->buy = $valueMarket;
+        $this->sell = $sellAndProfit;
+        $this->stop = $valueLastOpen;
+    }
 }

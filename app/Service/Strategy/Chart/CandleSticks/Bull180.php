@@ -4,6 +4,8 @@ namespace App\Service\Strategy\Chart\CandleSticks;
 
 class Bull180 extends CandleSticksAbstractInterface
 {
+    protected array $itemFound;
+
     public function watch(int $timeSecond = 1, int $quantatySticks = 3, float $percLengthDiff = 2)
     {
         while (true) {
@@ -37,10 +39,21 @@ class Bull180 extends CandleSticksAbstractInterface
                 //     (1 - ($data[$key - 1]['close'] / $data[$key - 1]['open'])) . ' - ' .
                 // "\n<br>";
 
+                $this->itemFound = $value;
                 return true;
             }
         }
 
         return false;
+    }
+
+    public function getLastValue() : float
+    {
+        return $this->itemFound['close'];
+    }
+
+    public function getOpenValue() : float
+    {
+        return $this->itemFound['open'];
     }
 }

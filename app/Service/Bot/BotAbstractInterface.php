@@ -12,6 +12,10 @@ abstract class BotAbstractInterface
 
     protected $api;
 
+    protected $buy;
+
+    protected $sell;
+
     public function __construct(
         StrategyAbstractInterface $strategy,
         BotSettings $botSettings
@@ -35,6 +39,8 @@ abstract class BotAbstractInterface
 
     abstract public function sell() : bool;
 
+    abstract public function execOrder() : bool;
+
     protected function setInstanceApi($api)
     {
         $this->api = $api;
@@ -44,4 +50,6 @@ abstract class BotAbstractInterface
     {
         return $this->api;
     }
+
+    abstract public function getTypeOrder(string $type) : string;
 }

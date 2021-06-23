@@ -9,8 +9,18 @@ use App\Service\Strategy\StrategySettings;
 
 class BinanceService
 {
+    protected BotBinance $bot;
+
     public function __construct()
     {
+        // TODO: Estrategia e bot devem ser coisas distintas, e não devem ser conhecer
+        $settingsBot = new BotSettings([] + $this->getSecurityData());
+        $strategy = $this->getStrategy();
+
+        $this->bot = new BotBinance(
+            $strategy,
+            $settingsBot
+        );
     }
 
     public function getSecurityData()
@@ -43,19 +53,20 @@ class BinanceService
 
     public function executeBot()
     {
-        $settingsBot = new BotSettings([] + $this->getSecurityData());
-        $strategy = $this->getStrategy();
-
-        $bot = new BotBinance(
-            $strategy,
-            $settingsBot
-        );
+        $bot = $this->getBot();
 
         while ($bot->exec()) {
             $bot->analysis();
-            $bot->buy();
-            $bot->sell();
-            dd("oi");
+            // $bot->buy();
+            // $bot->sell();
+            $bot->execOrder();
+
+            dd(__CLASS__ . "FIM DO LOOP");
         }
+    }
+
+    public function getBot()
+    {
+        return $this->bot;
     }
 }

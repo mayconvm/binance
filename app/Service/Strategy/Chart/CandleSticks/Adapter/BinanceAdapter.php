@@ -7,8 +7,8 @@ class BinanceAdapter extends CandleSticksAdapterAbstractInterface
     public function __construct()
     {
         // $this->file = file_get_contents(storage_path('/examples/sticks.json'));
-        $this->file = file_get_contents(storage_path('/examples/bear180.json'));
-        // $this->file = file_get_contents(storage_path('/examples/bull180.json'));
+        // $this->file = file_get_contents(storage_path('/examples/bear180.json'));
+        $this->file = file_get_contents(storage_path('/examples/bull180.json'));
 
         #dd($this->file);
     }
